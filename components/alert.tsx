@@ -7,6 +7,7 @@ type Props = {
 }
 
 const Alert = ({ preview }: Props) => {
+  preview = true;
   return (
     <div
       className={cn('border-b', {

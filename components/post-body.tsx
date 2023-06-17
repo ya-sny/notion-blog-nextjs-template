@@ -1,16 +1,15 @@
 import markdownStyles from './markdown-styles.module.css'
+import {ReactMarkdown} from 'react-markdown/lib/react-markdown'
 
 type Props = {
   content: string
 }
 
-const PostBody = ({ content }: Props) => {
+const PostBody = ({content}: Props) => {
+  console.log(content);
   return (
     <div className="max-w-2xl mx-auto">
-      <div
-        className={markdownStyles['markdown']}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <ReactMarkdown children={content}></ReactMarkdown>
     </div>
   )
 }

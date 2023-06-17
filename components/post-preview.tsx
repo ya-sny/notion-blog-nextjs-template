@@ -5,27 +5,27 @@ import Link from 'next/link'
 import type Author from '../interfaces/author'
 
 type Props = {
-  title: string
-  coverImage: string
+  id: string,
+  title: string,
+  description: string,
   date: string
-  excerpt: string
-  author: Author
   slug: string
+  tags: string[];
 }
 
 const PostPreview = ({
+  id,
   title,
-  coverImage,
+  description,
   date,
-  excerpt,
-  author,
   slug,
+  tags,
 }: Props) => {
   return (
     <div>
-      <div className="mb-5">
+      {/*<div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
-      </div>
+      </div>*/}
       <h3 className="text-3xl mb-3 leading-snug">
         <Link
           as={`/posts/${slug}`}
@@ -35,11 +35,16 @@ const PostPreview = ({
           {title}
         </Link>
       </h3>
+      <div className="text-sm mb-4">
+        {tags.map((tag) => (
+          <span className="mr-3 p-1 text-white bg-blue-500 rounded">
+            {tag}
+          </span>
+        ))}
+      </div>
       <div className="text-lg mb-4">
         <DateFormatter dateString={date} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
     </div>
   )
 }
